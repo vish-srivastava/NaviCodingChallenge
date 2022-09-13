@@ -8,14 +8,12 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner inputScanner = new Scanner(System.in);
         InputCommandHandler inputCommandHandler;
-        // file path= C:\Users\Vishal\Desktop\NAVI_INPUT.TXT
         try {
 
-            String filePath = inputScanner.nextLine();
+            String filePath = args[0];
             File file = new File(filePath);
-            inputScanner = new Scanner(file);
+            Scanner inputScanner = new Scanner(file);
             inputCommandHandler = new InputCommandHandler();
             while (inputScanner.hasNextLine()) {
                 String inputLine = inputScanner.nextLine();
@@ -25,7 +23,6 @@ public class Application {
 
         } catch (Exception e) {
             e.printStackTrace();
-            inputScanner.close();
         }
 
     }
