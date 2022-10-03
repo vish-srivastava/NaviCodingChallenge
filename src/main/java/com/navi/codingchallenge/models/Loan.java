@@ -29,11 +29,12 @@ public class Loan {
 
     public Integer getRemainingEMIs(Integer emisPaid) {
         Double outstandingAmount = this.amount - (this.lumpSumPaid + this.monthlyEMIAmount * emisPaid);
-        return (int) Math.ceil(outstandingAmount / this.monthlyEMIAmount);
+        int remainingEmis = (int) Math.ceil(outstandingAmount / this.monthlyEMIAmount);
+        return Math.max(remainingEmis, 0);
     }
 
     public Integer getAmountRepaid(Integer emisPaid) {
-        return (int) Math.ceil(this.lumpSumPaid + this.monthlyEMIAmount * emisPaid);
+        return (Integer) (int) Math.min((Math.ceil(this.lumpSumPaid + this.monthlyEMIAmount * emisPaid)), this.amount);
     }
 }
 

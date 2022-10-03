@@ -1,6 +1,7 @@
 package com.navi.codingchallenge.components;
 
 import com.navi.codingchallenge.models.InputType;
+import com.navi.codingchallenge.models.InvalidInputException;
 import com.navi.codingchallenge.models.Request;
 import lombok.Getter;
 
@@ -46,21 +47,21 @@ public class InputCommandHandler {
 
     private String[] validateInputAndGetParams(String input) throws Exception {
         if (input == null || input.length() == 0) {
-            throw new Exception("Invalid Input : Can't be empty");
+            throw new InvalidInputException("Invalid Input : Can't be empty");
         }
 
         String[] inputParams = input.split(" ");
 
         if (input.contains("LOAN") && inputParams.length != 6) {
-            throw new Exception("Invalid Input");
+            throw new InvalidInputException("Invalid Input");
         }
 
         if (input.contains("BALANCE") && inputParams.length != 4) {
-            throw new Exception("Invalid Input");
+            throw new InvalidInputException("Invalid Input");
         }
 
         if (input.contains("PAYMENT") && inputParams.length != 5) {
-            throw new Exception("Invalid Input");
+            throw new InvalidInputException("Invalid Input");
         }
 
         return inputParams;
@@ -107,7 +108,7 @@ public class InputCommandHandler {
     public void printOutput() {
         for (Request sequence : requestSequence) {
             String op = output.get(sequence);
-            if (op != null && op.length() > 0) {
+            if ((op != null) && (op.length() > 0)) {
                 System.out.println(op);
             }
         }
