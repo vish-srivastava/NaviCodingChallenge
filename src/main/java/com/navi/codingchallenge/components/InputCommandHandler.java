@@ -75,7 +75,7 @@ public class InputCommandHandler {
                 break;
 
             case PAYMENT:
-                ledgerManager.processPayment(input[1], input[2], Double.parseDouble(input[3]), Integer.parseInt(input[4]));
+                ledgerManager.processLumpSumPayment(input[1], input[2], Double.parseDouble(input[3]), Integer.parseInt(input[4]));
                 break;
             case BALANCE:
                 output = ledgerManager.getBalance(input[1], input[2], Integer.parseInt(input[3]));

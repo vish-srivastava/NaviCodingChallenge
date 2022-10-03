@@ -9,11 +9,11 @@ import java.util.Map;
 public class LedgerManager {
 
     private final Map<String, Loan> ledger;
-    private final String delimeiter;
+    private final String delimiter;
 
     public LedgerManager() {
         ledger = new HashMap<>();
-        delimeiter = " ";
+        delimiter = " ";
     }
 
     /**
@@ -38,7 +38,7 @@ public class LedgerManager {
      * Format - PAYMENT BANK_NAME BORROWER_NAME LUMP_SUM_AMOUNT EMI_NO
      * Example - PAYMENT MBI Dale 1000 5 means a lump sum payment of 1000 was done by Dale to MBI after 5 EMI payments.
      */
-    public void processPayment(String bankName, String borrowerName, Double lumpSum, Integer emisPaid) {
+    public void processLumpSumPayment(String bankName, String borrowerName, Double lumpSum, Integer emisPaid) {
         Loan loan = getLoanForBorrowerAndBank(bankName, borrowerName);
         if (loan == null) {
             return;
@@ -51,9 +51,9 @@ public class LedgerManager {
         Loan loan = getLoanForBorrowerAndBank(bankName, borrowerName);
         loan.acceptLumpSumPayment(0.0);
 
-        return loan.getBankName() + delimeiter +
-                loan.getBorrowerName() + delimeiter +
-                loan.getAmountRepaid(emi) + delimeiter +
+        return loan.getBankName() + delimiter +
+                loan.getBorrowerName() + delimiter +
+                loan.getAmountRepaid(emi) + delimiter +
                 loan.getRemainingEMIs(emi);
     }
 
