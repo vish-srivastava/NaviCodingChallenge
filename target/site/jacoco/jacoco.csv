@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+NaviCodingChallenge,com.navi.codingchallenge.models,Request,0,21,0,0,0,4,0,4,0,4
+NaviCodingChallenge,com.navi.codingchallenge.models,Loan,0,148,0,0,0,15,0,9,0,9
+NaviCodingChallenge,com.navi.codingchallenge.models,InvalidInputException,4,0,0,0,2,0,1,0,1,0
+NaviCodingChallenge,com.navi.codingchallenge.models,InputType,0,34,0,0,0,4,0,1,0,1
+NaviCodingChallenge,com.navi.codingchallenge.models,Loan.LoanBuilder,62,48,0,0,0,1,4,7,4,7
+NaviCodingChallenge,com.navi.codingchallenge,Application,52,0,2,0,19,0,4,0,3,0
+NaviCodingChallenge,com.navi.codingchallenge.components,LedgerManager,1,110,1,1,1,27,1,6,0,6
+NaviCodingChallenge,com.navi.codingchallenge.components,InputCommandHandler,30,230,8,12,7,40,6,14,1,8

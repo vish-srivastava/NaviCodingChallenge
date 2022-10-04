@@ -4,9 +4,10 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Builder
-@Getter
 public class Loan {
+
     private String bankName;
+
     private String borrowerName;
     private Double principle;
     private Integer years;
@@ -15,10 +16,20 @@ public class Loan {
     private Double monthlyEMIAmount;
     private Double lumpSumPaid;
 
+    private static final Integer monthsInYear = 12;
+
+    public String getBorrowersBankName() {
+        return this.bankName;
+    }
+
+    public String getBorrowersName() {
+        return this.borrowerName;
+    }
+
     public void processLoan() {
         Double interest = this.principle * (this.rateOfInterest) * this.years;
         this.amount = this.principle + interest;
-        this.monthlyEMIAmount = Math.ceil(this.amount / (12 * this.years));
+        this.monthlyEMIAmount = Math.ceil(this.amount / (monthsInYear * this.years));
         this.lumpSumPaid = 0.0;
     }
 

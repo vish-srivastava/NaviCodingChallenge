@@ -9,11 +9,14 @@ import java.util.Map;
 public class LedgerManager {
 
     private final Map<String, Loan> ledger;
-    private final String delimiter;
+    private static final String delimiter = " ";
+
+    private static final Double ONE_HUNDRED = 100.00;
+
+    private static final Double ZERO = 0.00;
 
     public LedgerManager() {
         ledger = new HashMap<>();
-        delimiter = " ";
     }
 
     /**
@@ -21,16 +24,9 @@ public class LedgerManager {
      * Example- LOAN IDIDI Dale 10000 5 4 means a loan amount of 10000 is paid to Dale by IDIDI for a tenure of 5 years at 4% rate of interest.
      */
     public void processLoan(String bankName, String borrowerName, Double principle, Integer numberOfYears, Double rateOfInterest) {
-        Loan loanRequest = Loan.builder()
-                .bankName(bankName)
-                .borrowerName(borrowerName)
-                .principle(principle)
-                .years(numberOfYears)
-                .rateOfInterest((rateOfInterest / 100.00))
-                .build();
+        Loan loanRequest = Loan.builder().bankName(bankName).borrowerName(borrowerName).principle(principle).years(numberOfYears).rateOfInterest((rateOfInterest / ONE_HUNDRED)).build();
         loanRequest.processLoan();
         ledger.put(getLoanID(bankName, borrowerName), loanRequest);
-
     }
 
 
@@ -47,12 +43,10 @@ public class LedgerManager {
     }
 
     public String getBalance(String bankName, String borrowerName, Integer emi) {
-
         Loan loan = getLoanForBorrowerAndBank(bankName, borrowerName);
-        loan.acceptLumpSumPayment(0.0);
-
-        return loan.getBankName() + delimiter +
-                loan.getBorrowerName() + delimiter +
+        loan.acceptLumpSumPayment(ZERO);
+        return loan.getBorrowersBankName() + delimiter +
+                loan.getBorrowersName() + delimiter +
                 loan.getAmountRepaid(emi) + delimiter +
                 loan.getRemainingEMIs(emi);
     }

@@ -2,8 +2,9 @@ package com.navi.codingchallenge;
 
 import com.navi.codingchallenge.components.InputCommandHandler;
 import com.navi.codingchallenge.models.Request;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 
 import java.util.*;
 
@@ -15,14 +16,14 @@ public class InputCommandHandlerTest {
     public void testHandleInput() {
         System.out.println("Testing testHandleInput");
         // dummy test
-        Assert.assertTrue(true);
+        Assertions.assertTrue(true);
     }
 
     @Test
     public void testParseRequest() {
 
         System.out.println("Testing testParseRequest");
-        Assert.assertTrue(true);
+        Assertions.assertTrue(true);
     }
 
     @Test
@@ -32,8 +33,17 @@ public class InputCommandHandlerTest {
         Queue<String> outputData = getOutputData1();
         inputCommandHandler = new InputCommandHandler();
         runTestData(testData, outputData); // test case 1
+    }
+
+    @Test
+    public void testProcessRequestsScenario2() throws Exception {
         inputCommandHandler = new InputCommandHandler();
         runTestData(getTestData2(), getOutputData2()); // test case 2
+    }
+
+    @Test
+    public void testProcessRequestsScenario3() throws Exception {
+        System.out.println("Testing testProcessRequestsScenario3");
         inputCommandHandler = new InputCommandHandler();
         runTestData(getTestData3(), getOutputData3()); // test case 3
     }
@@ -45,12 +55,12 @@ public class InputCommandHandlerTest {
             inputCommandHandler.handleInput(request);
         }
         Map<Request, String> output = inputCommandHandler.processRequests();
-        List<Request> outputSequnce = inputCommandHandler.getRequestSequence();
+        List<Request> outputSequnce = inputCommandHandler.getSequnceOfRequests();
 
         for (Request sequnce : outputSequnce) {
             String op = output.get(sequnce);
             if (op != null && op.length() > 0) {
-                Assert.assertEquals(op.trim(), Objects.requireNonNull(outputData.poll()).trim());
+                Assertions.assertEquals(op.trim(), Objects.requireNonNull(outputData.poll()).trim());
             }
         }
     }
@@ -59,13 +69,13 @@ public class InputCommandHandlerTest {
     @Test
     public void testPrintOutput() {
         System.out.println("Testing testPrintOutput");
-        Assert.assertTrue(true);
+        Assertions.assertTrue(true);
     }
 
     @Test
     public void testGetRequestSequence() {
         System.out.println("Testing testGetRequestSequence");
-        Assert.assertTrue(true);
+        Assertions.assertTrue(true);
     }
 
 
@@ -124,12 +134,18 @@ public class InputCommandHandlerTest {
 
     }
 
+
     public Queue<String> getOutputData3() {
         Queue<String> output = new LinkedList<>();
         output.offer("HDFC VISHAL 78000 5");
         output.offer("HDFC VISHAL 120000 0");
         return output;
 
+    }
+
+    @Test
+    void getSequnceOfRequests() {
+        Assertions.assertTrue(true);
     }
 
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LedgerManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">NaviCodingChallenge</a> &gt; <a href="index.source.html" class="el_package">com.navi.codingchallenge.components</a> &gt; <span class="el_source">LedgerManager.java</span></div><h1>LedgerManager.java</h1><pre class="source lang-java linenums">package com.navi.codingchallenge.components;
+
+import com.navi.codingchallenge.models.Loan;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class LedgerManager {
+
+    private final Map&lt;String, Loan&gt; ledger;
+    private final String delimiter;
+
+<span class="fc" id="L14">    public LedgerManager() {</span>
+<span class="fc" id="L15">        ledger = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L16">        delimiter = &quot; &quot;;</span>
+<span class="fc" id="L17">    }</span>
+
+    /**
+     * Format - LOAN BANK_NAME BORROWER_NAME PRINCIPAL NO_OF_YEARS RATE_OF_INTEREST
+     * Example- LOAN IDIDI Dale 10000 5 4 means a loan amount of 10000 is paid to Dale by IDIDI for a tenure of 5 years at 4% rate of interest.
+     */
+    public void processLoan(String bankName, String borrowerName, Double principle, Integer numberOfYears, Double rateOfInterest) {
+<span class="fc" id="L24">        Loan loanRequest = Loan.builder()</span>
+<span class="fc" id="L25">                .bankName(bankName)</span>
+<span class="fc" id="L26">                .borrowerName(borrowerName)</span>
+<span class="fc" id="L27">                .principle(principle)</span>
+<span class="fc" id="L28">                .years(numberOfYears)</span>
+<span class="fc" id="L29">                .rateOfInterest((rateOfInterest / 100.00))</span>
+<span class="fc" id="L30">                .build();</span>
+<span class="fc" id="L31">        loanRequest.processLoan();</span>
+<span class="fc" id="L32">        ledger.put(getLoanID(bankName, borrowerName), loanRequest);</span>
+
+<span class="fc" id="L34">    }</span>
+
+
+    /**
+     * Format - PAYMENT BANK_NAME BORROWER_NAME LUMP_SUM_AMOUNT EMI_NO
+     * Example - PAYMENT MBI Dale 1000 5 means a lump sum payment of 1000 was done by Dale to MBI after 5 EMI payments.
+     */
+    public void processLumpSumPayment(String bankName, String borrowerName, Double lumpSum, Integer emisPaid) {
+<span class="fc" id="L42">        Loan loan = getLoanForBorrowerAndBank(bankName, borrowerName);</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (loan == null) {</span>
+<span class="nc" id="L44">            return;</span>
+        }
+<span class="fc" id="L46">        loan.acceptLumpSumPayment(lumpSum);</span>
+<span class="fc" id="L47">    }</span>
+
+    public String getBalance(String bankName, String borrowerName, Integer emi) {
+
+<span class="fc" id="L51">        Loan loan = getLoanForBorrowerAndBank(bankName, borrowerName);</span>
+<span class="fc" id="L52">        loan.acceptLumpSumPayment(0.0);</span>
+
+<span class="fc" id="L54">        return loan.getBankName() + delimiter +</span>
+<span class="fc" id="L55">                loan.getBorrowerName() + delimiter +</span>
+<span class="fc" id="L56">                loan.getAmountRepaid(emi) + delimiter +</span>
+<span class="fc" id="L57">                loan.getRemainingEMIs(emi);</span>
+    }
+
+    private String getLoanID(String bankName, String borrowerName) {
+<span class="fc" id="L61">        return bankName + &quot;:&quot; + borrowerName;</span>
+    }
+
+    private Loan getLoanForBorrowerAndBank(String bankName, String borrowerName) {
+<span class="fc" id="L65">        String loanId = getLoanID(bankName, borrowerName);</span>
+<span class="fc" id="L66">        return ledger.get(loanId);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

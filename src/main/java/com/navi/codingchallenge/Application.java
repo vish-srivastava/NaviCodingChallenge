@@ -9,12 +9,17 @@ import java.util.Scanner;
 public class Application {
 
     public static void main(String[] args) {
-        InputCommandHandler inputCommandHandler;
+        int first = 0;
+        String filePath = args[first];
+        File file = new File(filePath);
+        parseAndProcessInput(file);
+
+    }
+
+    public static void parseAndProcessInput(File file) {
+        InputCommandHandler inputCommandHandler = new InputCommandHandler();
         try {
-            String filePath = args[0];
-            File file = new File(filePath);
             Scanner inputScanner = new Scanner(file);
-            inputCommandHandler = new InputCommandHandler();
             while (inputScanner.hasNextLine()) {
                 String inputLine = inputScanner.nextLine();
                 Request request = inputCommandHandler.parseRequest(inputLine);
@@ -24,9 +29,8 @@ public class Application {
             inputCommandHandler.printOutput();
             inputScanner.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-
     }
 
 
