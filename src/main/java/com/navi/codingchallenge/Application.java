@@ -4,11 +4,12 @@ import com.navi.codingchallenge.components.InputCommandHandler;
 import com.navi.codingchallenge.models.Request;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int first = 0;
         String filePath = args[first];
         File file = new File(filePath);
@@ -16,20 +17,24 @@ public class Application {
 
     }
 
-    public static void parseAndProcessInput(File file) {
+    public static void parseAndProcessInput(File file) throws FileNotFoundException {
         InputCommandHandler inputCommandHandler = new InputCommandHandler();
-        try {
-            Scanner inputScanner = new Scanner(file);
+        Scanner scanner = null;
+        try (Scanner inputScanner = new Scanner(file);) {
+            scanner = inputScanner;
             while (inputScanner.hasNextLine()) {
                 String inputLine = inputScanner.nextLine();
                 Request request = inputCommandHandler.parseRequest(inputLine);
                 inputCommandHandler.handleInput(request);
             }
-            inputCommandHandler.processRequests();
+            inputCommandHandler.processRemainingRequestsInOrder();
             inputCommandHandler.printOutput();
-            inputScanner.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
         }
     }
 

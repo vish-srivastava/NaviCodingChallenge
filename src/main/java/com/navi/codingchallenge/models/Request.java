@@ -6,8 +6,8 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class Request {
-    InputType inputType;
-    String emiNumber;
-    String [] inputParams;
+    private InputType inputType;
+    private String emiNumber;
+    private String[] inputParams;
 
 }

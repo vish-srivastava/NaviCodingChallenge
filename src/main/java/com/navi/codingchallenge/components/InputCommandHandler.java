@@ -1,37 +1,54 @@
 package com.navi.codingchallenge.components;
 
-import com.navi.codingchallenge.models.InputType;
-import com.navi.codingchallenge.models.InvalidInputException;
-import com.navi.codingchallenge.models.Request;
-import lombok.Getter;
+import com.navi.codingchallenge.exceptions.InvalidInputException;
+import com.navi.codingchallenge.exceptions.NotImplementedException;
+import com.navi.codingchallenge.models.*;
 
 import java.util.*;
+
+import static com.navi.codingchallenge.models.Constants.*;
 
 
 public class InputCommandHandler {
 
-    private final LedgerManager ledgerManager;
+    private final LedgerManager loanManager;
 
     private final List<Request> requests;
 
-    public LinkedList<Request> requestSequence;
+    public final List<Request> requestSequence;
 
     private final Map<Request, String> output;
 
-    private static final Integer NEGATIVE_ONE = -1;
-    private static final Integer POSITIVE_ONE = 1;
-
-    private static final Integer ZERO = 0;
-    private static final String DELIMITER = " ";
-
     public InputCommandHandler() {
-        ledgerManager = new LedgerManager();
+        loanManager = new LedgerManager();
         requestSequence = new LinkedList<>();
         requests = new ArrayList<>();
         output = new LinkedHashMap<>();
     }
 
-    public void handleInput(Request request) {
+    private String[] validateInputAndGetParams(String[] inputParams) throws InvalidInputException {
+        if (inputParams == null || inputParams.length == ZERO) {
+            throw new InvalidInputException("Invalid Input : Can't be empty");
+        }
+
+        String inputType = inputParams[ZERO];
+
+        if (inputType.equalsIgnoreCase(InputType.LOAN.name()) && inputParams.length != SIX) {
+            throw new InvalidInputException(INVALID_INPUT_ERROR);
+        }
+
+        if (inputType.equalsIgnoreCase(InputType.BALANCE.name()) && inputParams.length != FOUR) {
+            throw new InvalidInputException(INVALID_INPUT_ERROR);
+        }
+
+        if (inputType.equalsIgnoreCase(InputType.PAYMENT.name()) && inputParams.length != FIVE) {
+            throw new InvalidInputException(INVALID_INPUT_ERROR);
+        }
+
+        return inputParams;
+    }
+
+    public void handleInput(Request request) throws InvalidInputException, NotImplementedException {
         requestSequence.add(request);
         if (request.getInputType().equals(InputType.LOAN)) {
             output.put(request, processInputType(request.getInputParams(), request.getInputType()));
@@ -40,8 +57,9 @@ public class InputCommandHandler {
         }
     }
 
-    public Request parseRequest(String input) throws Exception {
+    public Request parseRequest(String input) throws InvalidInputException {
         String[] inputParams = input.split(DELIMITER);
+        validateInputAndGetParams(inputParams);
         InputType inputType = InputType.valueOf(inputParams[ZERO]);
         String emiNumber = null;
         if (inputType != InputType.LOAN) {
@@ -50,27 +68,56 @@ public class InputCommandHandler {
         return new Request(inputType, emiNumber, inputParams);
     }
 
-    private String processInputType(String[] input, InputType inputType) {
-        String output = null;
-        int index = 0;
-        switch (inputType) {
-            case LOAN: ledgerManager.processLoan(input[++index], input[++index], Double.parseDouble(input[++index]), Integer.parseInt(input[++index]), Double.parseDouble(input[++index])); break;
-            case PAYMENT: ledgerManager.processLumpSumPayment(input[++index], input[++index], Double.parseDouble(input[++index]), Integer.parseInt(input[++index]));break;
-            case BALANCE:output = ledgerManager.getBalance(input[++index], input[++index], Integer.parseInt(input[++index]));break;
-        }
-        return output;
+    private String processInputType(String[] input, InputType inputType) throws InvalidInputException, NotImplementedException {
+        String result = null;
+        int index = ZERO;
 
+        switch (inputType) {
+
+            case LOAN:
+                LoanApplicationRequest request = LoanApplicationRequest.builder()
+                        .bankName(input[++index])
+                        .borrowerName(input[++index])
+                        .principle(Double.parseDouble(input[++index]))
+                        .numberOfYears(Integer.parseInt(input[++index]))
+                        .rateOfInterest(Double.parseDouble(input[++index]))
+                        .loanType(LoanType.GENERIC)
+                        .build();
+                loanManager.processLoan(request);
+                break;
+
+
+            case PAYMENT:
+                LumpSumPaymentRequest paymentRequest = LumpSumPaymentRequest.builder()
+                        .bankName(input[++index])
+                        .borrowerName(input[++index])
+                        .lumpSum(Double.parseDouble(input[++index]))
+                        .emisPaid(Integer.parseInt(input[++index]))
+                        .build();
+                loanManager.processPayment(paymentRequest);
+                break;
+
+
+            case BALANCE:
+                result = loanManager.getBalance(input[++index], input[++index], Integer.parseInt(input[++index]));
+                break;
+
+            default:
+                throw new InvalidInputException("Input is Invalid/Not Supported");
+
+        }
+        return result;
     }
 
-    public Map<Request, String> processRequests() {
-        sortRequestOnMonthBasis();
+    public Map<Request, String> processRemainingRequestsInOrder() throws InvalidInputException, NotImplementedException {
+        sanitiseRequests();
         for (Request request : requests) {
             output.put(request, processInputType(request.getInputParams(), request.getInputType()));
         }
         return output;
     }
 
-    private void sortRequestOnMonthBasis() {
+    private void sanitiseRequests() {
         requests.sort((o1, o2) -> {
             Integer emi1 = Integer.parseInt(o1.getEmiNumber());
             Integer emi2 = Integer.parseInt(o2.getEmiNumber());
@@ -92,7 +139,7 @@ public class InputCommandHandler {
         }
     }
 
-    public List<Request> getSequnceOfRequests(){
+    public List<Request> getSequnceOfRequests() {
         return this.requestSequence;
     }
 
