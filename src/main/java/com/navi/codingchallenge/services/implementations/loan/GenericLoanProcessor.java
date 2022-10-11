@@ -34,6 +34,10 @@ public class GenericLoanProcessor implements LoanProcessor {
         loanService.save(loan);
     }
 
+    /**
+     * Assumption : Below implementation is for Simple Interest calculation per year, with monthly installments
+     * @param loan
+     */
     private void processLoan(Loan loan) {
         Double interest = loan.getPrinciple() * (loan.getRateOfInterest()) * loan.getYears();
         Double amount = loan.getPrinciple() + interest;
