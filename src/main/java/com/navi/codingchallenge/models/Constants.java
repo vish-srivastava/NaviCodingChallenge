@@ -21,4 +21,8 @@ public class Constants {
 
     public static final String INVALID_INPUT_ERROR = "Invalid Input";
 
+    public static final Integer MAX_LOAN_TERM = 100;
+
+    public static final double MAX_LOAN_INTEREST = 0.75;
+
 }

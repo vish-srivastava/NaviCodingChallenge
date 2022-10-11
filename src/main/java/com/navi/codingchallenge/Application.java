@@ -1,6 +1,6 @@
 package com.navi.codingchallenge;
 
-import com.navi.codingchallenge.components.InputCommandHandler;
+import com.navi.codingchallenge.services.InputCommandHandler;
 import com.navi.codingchallenge.models.Request;
 
 import java.io.File;

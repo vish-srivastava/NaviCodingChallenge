@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Builder
-@Setter
 @Getter
 public class Loan {
     private String bankName;
@@ -13,9 +12,14 @@ public class Loan {
     private Double principle;
     private Integer years;
     private Double rateOfInterest;
-    private Double amount;
+    private InterestType interestType;
+    @Setter
+    private Double totalRepayableAmount;
+    @Setter
     private Double monthlyEMIAmount;
+    @Setter
     private Double lumpSumPaid;
+    private LoanType loanType;
 
 }
 

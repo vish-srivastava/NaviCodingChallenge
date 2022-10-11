@@ -12,4 +12,5 @@ public class LoanApplicationRequest {
     private Integer numberOfYears;
     private Double rateOfInterest;
     private LoanType loanType=LoanType.GENERIC;
+    private InterestType interestType=InterestType.FIXED_SIMPLE_INTEREST;
 }

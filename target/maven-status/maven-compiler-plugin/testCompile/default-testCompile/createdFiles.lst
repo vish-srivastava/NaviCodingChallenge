@@ -1,7 +1,8 @@
-com\navi\codingchallenge\components\implementations\LoanProcessingFactoryTest.class
+com\navi\codingchallenge\services\InputCommandHandlerTest.class
 com\navi\codingchallenge\models\LoanTest.class
-com\navi\codingchallenge\components\interfaces\RepaymentServiceTest.class
-com\navi\codingchallenge\components\InputCommandHandlerTest.class
-com\navi\codingchallenge\components\interfaces\LoanProcessorTest.class
+com\navi\codingchallenge\services\interfaces\RepaymentServiceTest.class
+com\navi\codingchallenge\services\LoanServiceTest.class
+com\navi\codingchallenge\services\implementations\LoanProcessingFactoryTest.class
 com\navi\codingchallenge\models\RequestTest.class
+com\navi\codingchallenge\services\interfaces\LoanProcessorTest.class
 com\navi\codingchallenge\ApplicationTest.class
