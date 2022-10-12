@@ -17,7 +17,7 @@ public class RepaymentStrategyFactory {
             case FLOATING_SIMPLE_INTEREST:
                 throw new NotImplementedException();
             default:
-                return new DefaultRepaymentStrategy(loanService);
+                return new LumpSumRepaymentStrategy(loanService);
         }
     }
 }

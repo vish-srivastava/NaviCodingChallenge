@@ -32,10 +32,10 @@ public class LedgerManager {
         loanService.save(processedLoan);
     }
 
-    public void processPayment(LumpSumPaymentRequest paymentRequest) throws InvalidInputException, NotImplementedException {
+    public void processPayment(PaymentRequest paymentRequest) throws InvalidInputException, NotImplementedException {
         Loan loan = loanService.getLoanForBorrowerAndBank(paymentRequest.getBankName(), paymentRequest.getBorrowerName(), true);
         RepaymentService repaymentService = getRepaymentServiceForLoan(loan.getInterestType());
-        repaymentService.processLumpSumPayment(paymentRequest);
+        repaymentService.processPayment(paymentRequest);
     }
 
     public String getBalance(BalanceRequest balanceRequest) throws InvalidInputException, NotImplementedException {

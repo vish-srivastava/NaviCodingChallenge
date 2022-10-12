@@ -1,7 +1,6 @@
 package com.navi.codingchallenge.services;
 
 import com.navi.codingchallenge.exceptions.InvalidInputException;
-import com.navi.codingchallenge.exceptions.NotImplementedException;
 import com.navi.codingchallenge.models.InputType;
 import com.navi.codingchallenge.models.Request;
 import org.junit.jupiter.api.Assertions;
@@ -31,7 +30,6 @@ public class InputCommandHandlerTest {
 
     @Test
     public void testParseRequest() {
-
         System.out.println("Testing testParseRequest");
         Assertions.assertTrue(true);
     }

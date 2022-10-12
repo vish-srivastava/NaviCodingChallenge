@@ -4,7 +4,7 @@ import com.navi.codingchallenge.exceptions.InvalidInputException;
 import com.navi.codingchallenge.models.BalanceRequest;
 import com.navi.codingchallenge.models.InputType;
 import com.navi.codingchallenge.models.LoanApplicationRequest;
-import com.navi.codingchallenge.models.LumpSumPaymentRequest;
+import com.navi.codingchallenge.models.PaymentRequest;
 
 import static com.navi.codingchallenge.models.Constants.*;
 
@@ -57,7 +57,7 @@ public class ValidationUtils {
         }
     }
 
-    public static void validatePaymentRequest(LumpSumPaymentRequest paymentRequest) throws InvalidInputException {
+    public static void validatePaymentRequest(PaymentRequest paymentRequest) throws InvalidInputException {
         if (paymentRequest.getBorrowerName() == null || paymentRequest.getBorrowerName().length() == 0) {
             throw new InvalidInputException("Borrower name can't be empty");
         }

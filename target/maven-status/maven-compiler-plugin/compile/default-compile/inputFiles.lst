@@ -10,15 +10,14 @@ C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\c
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\BalanceResponse.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\Constants.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\Request.java
-C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\LumpSumPaymentRequest.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\implementations\repayment\RepaymentStrategy.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\interfaces\RepaymentService.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\exceptions\InvalidInputException.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\BalanceRequest.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\implementations\loan\PersonalLoanProcessor.java
+C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\implementations\repayment\LumpSumRepaymentStrategy.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\InterestType.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\exceptions\NotImplementedException.java
-C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\implementations\repayment\DefaultRepaymentStrategy.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\LoanService.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\repository\LoanRepository.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\implementations\loan\HomeLoanProcessor.java
@@ -26,6 +25,7 @@ C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\c
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\implementations\loan\GenericLoanProcessor.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\interfaces\LoanProcessor.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\implementations\loan\EducationLoanProcessor.java
+C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\PaymentRequest.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\RepaymentFrequency.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\models\LoanType.java
 C:\Users\Vishal\Documents\Workspace\NaviCodingChallenge\src\main\java\com\navi\codingchallenge\services\LedgerManager.java

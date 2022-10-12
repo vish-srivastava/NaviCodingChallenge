@@ -3,16 +3,16 @@ package com.navi.codingchallenge.services.implementations.repayment;
 import com.navi.codingchallenge.models.Loan;
 import com.navi.codingchallenge.services.LoanService;
 
-public class DefaultRepaymentStrategy implements RepaymentStrategy {
+public class LumpSumRepaymentStrategy implements RepaymentStrategy {
 
     private LoanService loanService;
 
-    public DefaultRepaymentStrategy(LoanService loanService) {
+    public LumpSumRepaymentStrategy(LoanService loanService) {
         this.loanService = loanService;
     }
 
     @Override
-    public void acceptLumpSumPayment(Loan loan, Double repaymentAmount) {
+    public void acceptPayment(Loan loan, Double repaymentAmount) {
         Double lumpSumPaidSoFar = loan.getLumpSumPaid();
         if (lumpSumPaidSoFar > loan.getTotalRepayableAmount()) {
             lumpSumPaidSoFar = loan.getTotalRepayableAmount();

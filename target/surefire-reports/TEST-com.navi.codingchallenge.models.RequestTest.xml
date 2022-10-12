@@ -65,7 +65,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.navi.codingchallenge.models.RequestTest" name="com.navi.codingchallenge.models.RequestTest.testGetInputType" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.RequestTest" name="com.navi.codingchallenge.models.RequestTest.testGetEmiNumber" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.RequestTest" name="com.navi.codingchallenge.models.RequestTest.testGetInputType" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.RequestTest" name="com.navi.codingchallenge.models.RequestTest.testGetInputParams" time="0"/>
 </testsuite>

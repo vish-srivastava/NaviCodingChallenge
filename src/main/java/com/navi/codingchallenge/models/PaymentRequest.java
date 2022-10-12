@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class LumpSumPaymentRequest {
+public class PaymentRequest {
 
     private String bankName;
     private String borrowerName;

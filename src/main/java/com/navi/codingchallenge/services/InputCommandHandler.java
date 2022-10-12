@@ -81,7 +81,7 @@ public class InputCommandHandler {
 
 
             case PAYMENT:
-                LumpSumPaymentRequest paymentRequest = LumpSumPaymentRequest.builder()
+                PaymentRequest paymentRequest = PaymentRequest.builder()
                         .bankName(input[++index])
                         .borrowerName(input[++index])
                         .lumpSum(Double.parseDouble(input[++index]))

@@ -5,7 +5,7 @@ import com.navi.codingchallenge.exceptions.NotImplementedException;
 import com.navi.codingchallenge.models.BalanceRequest;
 import com.navi.codingchallenge.models.BalanceResponse;
 import com.navi.codingchallenge.models.Loan;
-import com.navi.codingchallenge.models.LumpSumPaymentRequest;
+import com.navi.codingchallenge.models.PaymentRequest;
 
 public interface RepaymentService {
 
@@ -15,7 +15,7 @@ public interface RepaymentService {
      * @throws InvalidInputException
      * @throws NotImplementedException
      */
-    void processLumpSumPayment(LumpSumPaymentRequest lumpSumPaymentRequest) throws InvalidInputException, NotImplementedException;
+    void processPayment(PaymentRequest lumpSumPaymentRequest) throws InvalidInputException, NotImplementedException;
 
     void processInterest(Loan loan) ;
 

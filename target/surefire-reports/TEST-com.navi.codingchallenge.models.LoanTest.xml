@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="18" failures="0" name="com.navi.codingchallenge.models.LoanTest" time="0.002" errors="0" skipped="0">
+<testsuite tests="18" failures="0" name="com.navi.codingchallenge.models.LoanTest" time="0.003" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-8.0.345.1-hotspot\jre\bin"/>
@@ -65,22 +65,22 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetYears" time="0.002"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetPrinciple" time="0.003"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetYears" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetAmount" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testBuilder" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testAcceptLumpSumPayment" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetRemainingEMIs" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetAmountRepaid" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestProcessLoan" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestAcceptLumpSumPayment" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestGetRemainingEMIs" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestGetBankName" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetAmountRepaid" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetRateOfInterest" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetMonthlyEMIAmount" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetRemainingEMIs" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestAcceptLumpSumPayment" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetBorrowerName" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestProcessLoan" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestGetRemainingEMIs" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testTestGetAmountRepaid" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetLumpSumPaid" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetBorrowerName" time="0"/>
+  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetMonthlyEMIAmount" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testProcessLoan" time="0"/>
   <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetBankName" time="0"/>
-  <testcase classname="com.navi.codingchallenge.models.LoanTest" name="com.navi.codingchallenge.models.LoanTest.testGetPrinciple" time="0"/>
 </testsuite>

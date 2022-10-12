@@ -4,8 +4,6 @@ com\navi\codingchallenge\models\BalanceResponse$BalanceResponseBuilder.class
 com\navi\codingchallenge\services\implementations\loan\GenericLoanProcessor.class
 com\navi\codingchallenge\services\implementations\loan\LoanProcessingFactory.class
 com\navi\codingchallenge\services\implementations\loan\LoanProcessingFactory$1.class
-com\navi\codingchallenge\services\implementations\repayment\DefaultRepaymentStrategy.class
-com\navi\codingchallenge\models\LumpSumPaymentRequest.class
 com\navi\codingchallenge\services\LedgerManager$1.class
 com\navi\codingchallenge\services\interfaces\RepaymentService.class
 com\navi\codingchallenge\models\Loan$LoanBuilder.class
@@ -14,6 +12,7 @@ com\navi\codingchallenge\models\LoanApplicationRequest$LoanApplicationRequestBui
 com\navi\codingchallenge\models\Request.class
 com\navi\codingchallenge\utils\ModelMapper.class
 com\navi\codingchallenge\services\implementations\loan\EducationLoanProcessor.class
+com\navi\codingchallenge\models\PaymentRequest.class
 com\navi\codingchallenge\models\Loan.class
 com\navi\codingchallenge\services\implementations\loan\HomeLoanProcessor.class
 com\navi\codingchallenge\models\InputType.class
@@ -21,11 +20,12 @@ com\navi\codingchallenge\services\implementations\loan\PersonalLoanProcessor.cla
 com\navi\codingchallenge\models\LoanApplicationRequest.class
 com\navi\codingchallenge\models\BalanceRequest$BalanceRequestBuilder.class
 com\navi\codingchallenge\models\BalanceRequest.class
+com\navi\codingchallenge\models\PaymentRequest$PaymentRequestBuilder.class
 com\navi\codingchallenge\exceptions\NotImplementedException.class
+com\navi\codingchallenge\services\implementations\repayment\LumpSumRepaymentStrategy.class
 com\navi\codingchallenge\services\implementations\repayment\RepaymentStrategyFactory$1.class
 com\navi\codingchallenge\services\interfaces\LoanProcessor.class
 com\navi\codingchallenge\services\InputCommandHandler.class
-com\navi\codingchallenge\models\LumpSumPaymentRequest$LumpSumPaymentRequestBuilder.class
 com\navi\codingchallenge\exceptions\InvalidInputException.class
 com\navi\codingchallenge\models\RepaymentFrequency.class
 com\navi\codingchallenge\Application.class

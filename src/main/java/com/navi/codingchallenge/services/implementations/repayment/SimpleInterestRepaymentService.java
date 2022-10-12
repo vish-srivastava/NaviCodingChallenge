@@ -5,7 +5,7 @@ import com.navi.codingchallenge.exceptions.NotImplementedException;
 import com.navi.codingchallenge.models.BalanceRequest;
 import com.navi.codingchallenge.models.BalanceResponse;
 import com.navi.codingchallenge.models.Loan;
-import com.navi.codingchallenge.models.LumpSumPaymentRequest;
+import com.navi.codingchallenge.models.PaymentRequest;
 import com.navi.codingchallenge.services.LoanService;
 import com.navi.codingchallenge.services.interfaces.RepaymentService;
 
@@ -29,11 +29,12 @@ public class SimpleInterestRepaymentService implements RepaymentService {
      * @throws NotImplementedException
      */
     @Override
-    public void processLumpSumPayment(LumpSumPaymentRequest lumpSumPaymentRequest) throws InvalidInputException, NotImplementedException {
+    public void processPayment(PaymentRequest lumpSumPaymentRequest) throws InvalidInputException, NotImplementedException {
 
         Loan loan = loanService.getLoanForBorrowerAndBank(lumpSumPaymentRequest.getBankName(), lumpSumPaymentRequest.getBorrowerName(), true);
+
         RepaymentStrategy repaymentStrategy = RepaymentStrategyFactory.getRepaymentStrategyForLoan(loan, loanService);
-        repaymentStrategy.acceptLumpSumPayment(loan, lumpSumPaymentRequest.getLumpSum());
+        repaymentStrategy.acceptPayment(loan, lumpSumPaymentRequest.getLumpSum());
     }
 
     /**
