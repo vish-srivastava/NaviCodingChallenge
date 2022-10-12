@@ -20,6 +20,7 @@ public class ModelMapper {
                 .loanType(request.getLoanType())
                 .interestType(request.getInterestType())
                 .rateOfInterest((request.getRateOfInterest() / ONE_HUNDRED))
+                .repaymentFrequency(request.getRepaymentFrequency())
                 .build();
     }
 }

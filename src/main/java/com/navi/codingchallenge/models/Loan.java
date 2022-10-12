@@ -13,6 +13,7 @@ public class Loan {
     private Integer years;
     private Double rateOfInterest;
     private InterestType interestType;
+    private RepaymentFrequency repaymentFrequency;
     @Setter
     private Double totalRepayableAmount;
     @Setter
@@ -20,6 +21,7 @@ public class Loan {
     @Setter
     private Double lumpSumPaid;
     private LoanType loanType;
+
 
 }
 

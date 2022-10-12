@@ -17,7 +17,7 @@ public class Application {
 
     }
 
-    public static void parseAndProcessInput(File file) throws FileNotFoundException {
+    public static void parseAndProcessInput(File file) {
         InputCommandHandler inputCommandHandler = new InputCommandHandler();
         Scanner scanner = null;
         try (Scanner inputScanner = new Scanner(file);) {

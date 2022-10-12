@@ -29,6 +29,7 @@ public class InputCommandHandler {
 
 
     public void handleInput(Request request) throws InvalidInputException, NotImplementedException {
+        ValidationUtils.validateInputAndGetParams(request.getInputParams());
         requestSequence.add(request);
         if (request.getInputType().equals(InputType.LOAN)) {
             output.put(request, processInputType(request.getInputParams(), request.getInputType()));
@@ -37,6 +38,14 @@ public class InputCommandHandler {
         }
     }
 
+    /**
+     * Process LOAN Appication requests first, and put the rest in the queue
+     * The Payment and Balance requests may not be sequential : sanitise those requests later
+     *
+     * @param input
+     * @return
+     * @throws InvalidInputException
+     */
     public Request parseRequest(String input) throws InvalidInputException {
         String[] inputParams = input.split(DELIMITER);
         ValidationUtils.validateInputAndGetParams(inputParams);
@@ -78,6 +87,7 @@ public class InputCommandHandler {
                         .lumpSum(Double.parseDouble(input[++index]))
                         .emisPaid(Integer.parseInt(input[++index]))
                         .build();
+                ValidationUtils.validatePaymentRequest(paymentRequest);
                 loanManager.processPayment(paymentRequest);
                 break;
 
@@ -88,6 +98,7 @@ public class InputCommandHandler {
                         .borrower(input[++index])
                         .emiNumber(Integer.parseInt(input[++index]))
                         .build();
+                ValidationUtils.validateBalanceRequest(balanceRequest);
                 result = loanManager.getBalance(balanceRequest);
                 break;
 

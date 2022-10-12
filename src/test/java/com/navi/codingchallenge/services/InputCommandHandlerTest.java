@@ -1,5 +1,8 @@
 package com.navi.codingchallenge.services;
 
+import com.navi.codingchallenge.exceptions.InvalidInputException;
+import com.navi.codingchallenge.exceptions.NotImplementedException;
+import com.navi.codingchallenge.models.InputType;
 import com.navi.codingchallenge.models.Request;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +17,16 @@ public class InputCommandHandlerTest {
     public void testHandleInput() {
         System.out.println("Testing testHandleInput");
         // dummy test
-        Assertions.assertTrue(true);
+        inputCommandHandler = new InputCommandHandler();
+        Request incorrectRequest = new Request(InputType.LOAN, "0", new String[]{"rja", "aljfsb"});
+
+        try {
+            inputCommandHandler.handleInput(incorrectRequest);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assertions.assertTrue(e instanceof InvalidInputException);
+        }
+
     }
 
     @Test

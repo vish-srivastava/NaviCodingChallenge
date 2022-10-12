@@ -25,6 +25,7 @@ public class LedgerManager {
         loanProcessor.processLoanRequest(loanApplicationRequest);
     }
 
+
     public void processPayment(LumpSumPaymentRequest paymentRequest) throws InvalidInputException, NotImplementedException {
         RepaymentService repaymentService = new DefaultRepaymentService();
         repaymentService.processLumpSumPayment(paymentRequest);

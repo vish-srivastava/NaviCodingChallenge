@@ -27,6 +27,7 @@ com\navi\codingchallenge\services\interfaces\LoanProcessor.class
 com\navi\codingchallenge\services\InputCommandHandler.class
 com\navi\codingchallenge\models\LumpSumPaymentRequest$LumpSumPaymentRequestBuilder.class
 com\navi\codingchallenge\exceptions\InvalidInputException.class
+com\navi\codingchallenge\models\RepaymentFrequency.class
 com\navi\codingchallenge\Application.class
 com\navi\codingchallenge\models\Constants.class
 com\navi\codingchallenge\models\InterestType.class

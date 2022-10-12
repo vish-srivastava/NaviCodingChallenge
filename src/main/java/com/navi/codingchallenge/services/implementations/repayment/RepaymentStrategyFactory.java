@@ -13,10 +13,8 @@ public class RepaymentStrategyFactory {
     public static RepaymentStrategy getRepaymentStrategyForLoan(Loan loan, LoanService loanService) throws NotImplementedException {
         switch (loan.getInterestType()) {
             case FIXED_COMPOUND_INTEREST:
-                throw new NotImplementedException();
-            case FLOATING_SIMPLE_INTEREST:
-                throw new NotImplementedException();
             case FLOATING_COMPOUND_INTEREST:
+            case FLOATING_SIMPLE_INTEREST:
                 throw new NotImplementedException();
             default:
                 return new DefaultRepaymentStrategy(loanService);

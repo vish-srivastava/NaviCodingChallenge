@@ -26,8 +26,9 @@ public class GenericLoanProcessor implements LoanProcessor {
 
     @Override
     public void processLoanRequest(LoanApplicationRequest request) throws InvalidInputException {
-        if (loanService.getLoanForBorrowerAndBank(request.getBankName(), request.getBorrowerName()) != null) {
-            throw new InvalidInputException("Loan for Borrower and Bank already Exists");
+        Loan existingLoan = loanService.getLoanForBorrowerAndBank(request.getBankName(), request.getBorrowerName(), false);
+        if (existingLoan != null) {
+            throw new InvalidInputException("Loan for this request already exists");
         }
         Loan loan = ModelMapper.mapLoanApplicationRequestToLoan(request);
         processLoan(loan);
@@ -36,6 +37,7 @@ public class GenericLoanProcessor implements LoanProcessor {
 
     /**
      * Assumption : Below implementation is for Simple Interest calculation per year, with monthly installments
+     *
      * @param loan
      */
     private void processLoan(Loan loan) {

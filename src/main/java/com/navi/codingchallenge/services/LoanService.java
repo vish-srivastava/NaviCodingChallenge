@@ -15,8 +15,13 @@ public class LoanService {
         this.loanRepository = LoanRepository.geLoanRepositoryInstance();
     }
 
-    public Loan getLoanForBorrowerAndBank(String bankName, String borrowerName) {
-        return loanRepository.getLoanForBorrowerAndBank(bankName, borrowerName);
+    public Loan getLoanForBorrowerAndBank(String bankName, String borrowerName, boolean throwExceptionIfNotFound) throws InvalidInputException {
+        Loan loan = loanRepository.getLoanForBorrowerAndBank(bankName, borrowerName);
+        if (throwExceptionIfNotFound && loan == null) {
+            throw new InvalidInputException("Loan for bankName: " + bankName + " borrowerName:" + borrowerName + " doesn't exist");
+        }
+
+        return loan;
     }
 
     public Loan save(Loan loan) {
@@ -25,11 +30,7 @@ public class LoanService {
     }
 
     public BalanceResponse getOutstandingBalance(BalanceRequest balanceRequest) throws InvalidInputException {
-        Loan loan = getLoanForBorrowerAndBank(balanceRequest.getBankName(), balanceRequest.getBorrower());
-        if (loan == null) {
-            throw new InvalidInputException("No loan found for bank : " + balanceRequest.getBankName() + " & borrowerName : " + balanceRequest.getBorrower());
-        }
-
+        Loan loan = getLoanForBorrowerAndBank(balanceRequest.getBankName(), balanceRequest.getBorrower(), true);
         int amountRepaidSoFar = getAmountRepaid(loan, balanceRequest.getEmiNumber());
         return BalanceResponse.builder()
                 .bankName(loan.getBankName())

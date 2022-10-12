@@ -13,4 +13,5 @@ public class LoanApplicationRequest {
     private Double rateOfInterest;
     private LoanType loanType=LoanType.GENERIC;
     private InterestType interestType=InterestType.FIXED_SIMPLE_INTEREST;
+    private RepaymentFrequency repaymentFrequency=RepaymentFrequency.MONTHLY;
 }

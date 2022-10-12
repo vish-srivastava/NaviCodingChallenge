@@ -1,25 +1,24 @@
-package com.navi.codingchallenge;
+package com.navi.codingchallenge.services.implementations;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ApplicationTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-    /**
-     * Refer to InputCommandHandler Test and
-     */
+class LoanServiceTest {
+
     @Test
-    public void testMain() {
+    void getLoanForBorrowerAndBank() {
         Assertions.assertTrue(true);
     }
 
     @Test
-    public void testTestMain() {
+    void save() {
         Assertions.assertTrue(true);
     }
 
     @Test
-    public void testParseAndProcessInput() {
+    void getOutstandingBalance() {
         Assertions.assertTrue(true);
     }
 }
