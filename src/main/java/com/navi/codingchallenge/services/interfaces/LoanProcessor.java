@@ -2,6 +2,7 @@ package com.navi.codingchallenge.services.interfaces;
 
 import com.navi.codingchallenge.exceptions.InvalidInputException;
 import com.navi.codingchallenge.exceptions.NotImplementedException;
+import com.navi.codingchallenge.models.Loan;
 import com.navi.codingchallenge.models.LoanApplicationRequest;
 
 public interface LoanProcessor {
@@ -12,5 +13,5 @@ public interface LoanProcessor {
      * @throws InvalidInputException
      * @throws NotImplementedException
      */
-    void processLoanRequest(LoanApplicationRequest request) throws InvalidInputException, NotImplementedException;
+    Loan processLoanRequest(LoanApplicationRequest request) throws InvalidInputException, NotImplementedException;
 }

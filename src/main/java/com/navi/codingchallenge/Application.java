@@ -1,15 +1,14 @@
 package com.navi.codingchallenge;
 
-import com.navi.codingchallenge.services.InputCommandHandler;
 import com.navi.codingchallenge.models.Request;
+import com.navi.codingchallenge.services.InputCommandHandler;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         int first = 0;
         String filePath = args[first];
         File file = new File(filePath);
